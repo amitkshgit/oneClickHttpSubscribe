@@ -5,8 +5,7 @@
 // over http in one click 
 // Needs IAM Role access to subscribe to a topic
 
-require '../aws/vendor/autoload.php';
-include("/var/www/html/simple_html_dom.php");
+require 'AWSSDKforPHP/aws.phar';
 date_default_timezone_set('Asia/Calcutta');
 use Aws\Sns\SnsClient;
 
@@ -28,7 +27,7 @@ error_log("SubscribeURL: $susbscribeURL", 0);
 error_log("SNSToken: $snstoken", 0);
 error_log("TokenARN: $snsARN", 0);
 $client = SnsClient::factory(array(
-    'region' => 'us-west-2', // (e.g., us-west-2)
+    'region' => 'us-east-1', // (e.g., us-west-2)
 ));
 $result = $client->confirmSubscription(array(
     'TopicArn' => $snsARN,
