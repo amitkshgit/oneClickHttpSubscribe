@@ -14,6 +14,9 @@ ini_set("#error_log", "/tmp/php-error.log");
 error_log("Starting....");
 error_log(date("Y-m-d H:i:s"));
  
+$jsonMetadata = file_get_contents("http://169.254.169.254/latest/dynamic/instance-identity/document/");
+$decodedjsonMetadata = json_decode($jsonMetadata);
+$region = $decodedjsonMetadata->{'region'};
 $bodyis = file_get_contents('php://input');
 #error_log("Body: $bodyis",0);
 $obj = json_decode($bodyis);
@@ -27,7 +30,7 @@ error_log("SubscribeURL: $susbscribeURL", 0);
 error_log("SNSToken: $snstoken", 0);
 error_log("TokenARN: $snsARN", 0);
 $client = SnsClient::factory(array(
-    'region' => 'us-east-1', // (e.g., us-west-2)
+    'region' => $region, // (e.g., us-west-2)
 ));
 $result = $client->confirmSubscription(array(
     'TopicArn' => $snsARN,
