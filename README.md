@@ -7,7 +7,7 @@ You will need to provide
 - EmailId to subscribe to SNS Topic - Optional
 
 If you dont want to use the Cloudformation template OR want to subscribe to an existing SNS Topic, do following - 
-- Create an IAM Role whcih has permissions of ConfirmSubscription and Subscribe to arn:aws:sns:<REGION>:<YOUR_ACCOUNT_ID:*
+- Create an IAM Role which has permissions of ConfirmSubscription and Subscribe to arn:aws:sns:<YOUR_REGION>:<YOUR_ACCOUNT_ID>:*
 - Launch an EC2 instance with above Role
 - Copy the PHP scripts in Document Root folder (ex. /var/www/html on Amazon Linux)
 - Execute the PHP script doSubscription.php <REGION> <TopicARN>
