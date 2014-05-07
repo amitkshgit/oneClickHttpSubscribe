@@ -189,7 +189,7 @@
 
   "Outputs" : {
     "URL" : {
-      "Description" : "The Subscription will be done at this URL: ",
+      "Description" : "The Subscription has been done at this URL: ",
       "Value" :  { "Fn::Join" : ["", ["http://", { "Fn::GetAtt" : [ "WebServer", "PublicDnsName" ]} , "/oneClickHttpSubscribe/getNotified.php"]] }
     }
   }
